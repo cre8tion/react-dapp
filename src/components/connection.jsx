@@ -17,9 +17,6 @@ const Connection = ({ children }) => {
     return () => { didCancel = true; }
   });
 
-
-
-
   return (
     <React.Fragment>
       {!connected && (
