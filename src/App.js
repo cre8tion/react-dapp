@@ -2,14 +2,17 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Connection from './components/connection';
-import {Form} from 'react-bootstrap'
+import {Form, Table} from 'react-bootstrap'
 
 
 const { BN, units } = require('@zilliqa-js/util');
 const { toBech32Address } = require('@zilliqa-js/crypto');
+var candidate1_votes=0;
+var candidate2_votes=0;
 
 function App() {
   const [state, setState] = useState({});
+  
 
 
   return (
@@ -37,6 +40,28 @@ function App() {
               <hr />
         </form>
         </div>
+        <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Votes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Candidate 1</td>
+      <td>{candidate1_votes}</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Candidate 2</td>
+      <td>{candidate2_votes}</td>
+    </tr>
+  </tbody>
+</Table>
+<button type="submit" class="btn btn-primary">Refresh Vote</button>
         <Connection />
     </div>
   );
