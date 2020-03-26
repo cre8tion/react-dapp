@@ -3,7 +3,6 @@ require('dotenv').config();
 const { BN, Long, bytes, units } = require('@zilliqa-js/util');
 const { Zilliqa } = require('@zilliqa-js/zilliqa');
 const {
-  toBech32Address,
   getAddressFromPrivateKey,
 } = require('@zilliqa-js/crypto');
 
@@ -50,8 +49,10 @@ transition Vote(candidate : Uint32, voterAdd: ByStr20)
 (*    has_voted = builtin contains voters voterAdd; *)
     match has_voted with 
     | True => 
-        e = { _exception : "Voted twice"; message : "You have voted twice" };
-        throw e
+(*        e = { _exception : "Voted twice"; message : "You have voted twice" };*)
+(*        throw e*)
+        e = { _eventname : "Voted twice"; amount : _amount };
+            event e
     | False => 
 (*        voters[voterAdd] := one*)
         voters[voterAdd] := one;
@@ -59,7 +60,8 @@ transition Vote(candidate : Uint32, voterAdd: ByStr20)
         match is_candidate1 with 
         | True => 
             vote1 <- candidate1;
-            u_vote1 = builtin add vote1 one;
+            u_vote1 = builtin add vote1 one; 
+            
             candidate1 := u_vote1; 
             e = { _eventname : "Voting for candidate 1 success"; amount : _amount };
             event e
@@ -73,8 +75,10 @@ transition Vote(candidate : Uint32, voterAdd: ByStr20)
                 e = { _eventname : "Voting for candidate 2 success"; amount : _amount };
                 event e
             | False => 
-                e = { _exception : "Unknown candidate"; message : "There is no such candidate" };
-                throw e
+(*                e = { _exception : "Unknown candidate"; message : "There is no such candidate" };*)
+(*                throw e*)
+                e = { _eventname : "Unknown candidate"; amount : _amount };
+                event e
             end 
         end 
     end 

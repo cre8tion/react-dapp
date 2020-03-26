@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './App.css';
+import './css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Connection from './components/connection';
 import CandidateTable from './components/candidateTable';
@@ -16,10 +16,9 @@ const VERSION = bytes.pack(chainId, msgVersion);
 const myGasPrice = units.toQa('1000', units.Units.Li);
 
 // To replace for different contracts
-const contractAddress = "0x65F2a998fAcFf6952920611A88C40916B744cFe5"
+const contractAddress = "0xAc7Cabec87310c041840A718c5CcbDa9F927ad1f"
 
 function App() {
-  const [state, setState] = useState({});
   const [candidate1Votes, setCandidate1Votes] = useState(0);
   const [candidate2Votes, setCandidate2Votes] = useState(0);
   const vote = useRef(null);
@@ -88,22 +87,27 @@ function App() {
 
   return (
     <div className="App">
-        <div className="col-lg-12">
+        <div className="col-lg-12" style={{marginTop: "1em"}}>
           <h1>Election Results</h1>
         </div>
         <br/>
         <div>
-          <CandidateTable candidate1Votes={candidate1Votes} candidate2Votes={candidate2Votes}/>
+          <div style={{margin:"0 4em 0 4em"}}>
+            <CandidateTable candidate1Votes={candidate1Votes} candidate2Votes={candidate2Votes}/>
+          </div>
           <br/>
-          <Form>
-            <Form.Group controlId="candidateForm">
-              <Form.Label>Select Candidate</Form.Label>
-              <Form.Control as="select" ref={vote}>
-                <option value="1">Candidate 1</option>
-                <option value="2">Candidate 2</option>
-              </Form.Control>
-            </Form.Group>
-          </Form>
+          <div style={{margin:"0 4em 0 4em"}}>
+            <Form>
+              <Form.Group controlId="candidateForm">
+                <Form.Label>Select Candidate</Form.Label>
+                <br/>
+                <Form.Control as="select" ref={vote} >
+                  <option value="1" style={{width: "100em"}}>Candidate 1</option>
+                  <option value="2" style={{width: "100em"}}>Candidate 2</option>
+                </Form.Control>
+              </Form.Group>
+            </Form>
+          </div>
           <Row>
             <Col>
               <Button onClick={submitVote} className="btn btn-primary">Vote</Button>
@@ -113,6 +117,7 @@ function App() {
             </Col>
           </Row>
         </div>
+        <br/>
         <br/>
         <Connection />
     </div>
