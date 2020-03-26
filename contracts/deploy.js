@@ -54,12 +54,12 @@ transition Vote(candidate : Uint32, voterAdd: ByStr20)
         throw e
     | False => 
 (*        voters[voterAdd] := one*)
+        voters[voterAdd] := one;
         is_candidate1 = builtin eq candidate one; 
         match is_candidate1 with 
         | True => 
             vote1 <- candidate1;
-            u_vote1 = builtin add vote1 one; 
-            voters[voterAdd] := one;
+            u_vote1 = builtin add vote1 one;
             candidate1 := u_vote1; 
             e = { _eventname : "Voting for candidate 1 success"; amount : _amount };
             event e

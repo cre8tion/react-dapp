@@ -16,7 +16,7 @@ const VERSION = bytes.pack(chainId, msgVersion);
 const myGasPrice = units.toQa('1000', units.Units.Li);
 
 // To replace for different contracts
-const contractAddress = "0x2823f0aA57c58A55323dd6Ec08Db7E8a0EE695b3"
+const contractAddress = "0x65F2a998fAcFf6952920611A88C40916B744cFe5"
 
 function App() {
   const [state, setState] = useState({});
@@ -72,7 +72,6 @@ function App() {
     async function fetchdata(){
       const deployed = zilliqa.contracts.at(contractAddress);
       const state = await deployed.getState();
-      // To update UI
       setCandidate1Votes(state.candidate1)
       setCandidate2Votes(state.candidate2)
       console.log(JSON.stringify(state, null, 4));
