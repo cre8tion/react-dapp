@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "@zilliqa-js/zilliqa": "^2.1.0",
-    "bootstrap": "^4.4.1",
-    "react": "^16.13.0",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^13.1.9",
+    "@zilliqa-js/zilliqa": "^2.3.0-alpha.0",
+    "bootstrap": "^5.0.1",
+    "react": "^17.0.2",
     "react-bootstrap": "^1.0.0",
-    "react-dom": "^16.13.0",
+    "react-dom": "^17.0.2",
     "react-scripts": "^4.0.1"
   },
   "scripts": {
@@ -18,9 +18,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": {
     "production": [
@@ -35,7 +32,7 @@
     ]
   },
   "devDependencies": {
-    "dotenv": "^8.2.0",
+    "dotenv": "^9.0.2",
     "nodemon": "^2.0.2"
   }
 }
